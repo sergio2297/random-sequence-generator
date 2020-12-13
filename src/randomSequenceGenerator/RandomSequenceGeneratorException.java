@@ -1,3 +1,8 @@
+/**
+ * @author Sergio Fernández Aguilar
+ * @date 13/12/2020
+ * @version 0.1
+ */
 package randomSequenceGenerator;
 
 public class RandomSequenceGeneratorException extends Exception {
