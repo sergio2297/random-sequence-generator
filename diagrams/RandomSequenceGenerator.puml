@@ -2,6 +2,22 @@
 
 hide empty members
 
++interface RandomSequenceGenerator<T> {
+    +add(final T ... elems) : void
+    +add(final Iterable<T> elems) : void
+    +clear() : void
+    +newSequence() : RandomSequenceBuilder<T>
+
+    + {static} <T> newGeneratorWorkingWithReferences() : RandomSequenceGenerator<T>
+    + {static} <T extends Cloneable> newGeneratorWorkingWithClones() : RandomSequenceGenerator<T>
+}
+
+~class RandomSequenceGeneratorOfReferences<T> implements RandomSequenceGenerator{
+}
+
+~class RandomSequenceGeneratorOfClones<T> implements RandomSequenceGenerator{
+}
+
 +class RandomSequenceBuilder<T> {
     - rnd : Random
     - elems : Iterable<T>
@@ -14,13 +30,21 @@ hide empty members
     + create() : RandomSequence<T>
 }
 
+RandomSequenceGenerator .> RandomSequenceBuilder : uses
+RandomSequenceBuilder .> RandomSequence : creates
+
 +interface Iterable<T> {
 }
 
-+interface RandomSequence<T> extends Iterable {
++interface RandomSequence<T> {
     + length() : int
     + get(position : int) : T
 }
+
+~class ArrayRandomSequence<T> implements RandomSequence {
+}
+
+RandomSequence -|> Iterable
 
 +class RandomSequenceException extends RuntimeException {
     + RandomSequenceException(msg : String)
