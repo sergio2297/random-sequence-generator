@@ -50,7 +50,7 @@ class RandomSequenceBuilderTest {
     }
 
     @Test
-    void instantiateBuilderWithNullIterable_doesNotThrowExceptionTest() {
+    void instantiateBuilderWithNullIterable_throwsExceptionTest() {
         Iterable<Foo> nullIterable = null;
 
         assertThrows(IllegalArgumentException.class, () -> new RandomSequenceBuilder<>(nullIterable));
@@ -64,7 +64,7 @@ class RandomSequenceBuilderTest {
     }
 
     @Test
-    void generatSequenceFromNoElems_returnEmptySequenceTest() {
+    void generateSequenceFromNoElems_returnEmptySequenceTest() {
         builder = new RandomSequenceBuilder<>();
 
         RandomSequence<Foo> sequence = builder.create();
