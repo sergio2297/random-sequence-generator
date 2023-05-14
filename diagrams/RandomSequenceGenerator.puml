@@ -1,0 +1,29 @@
+@startuml
+
+hide empty members
+
++class RandomSequenceBuilder<T> {
+    - rnd : Random
+    - elems : Iterable<T>
+
+    + RandomSequenceBuilder(elems : Iterable<T>)
+    + allowRepetition() : RandomSequenceBuilder<T>
+    + notAllowRepetition() : RandomSequenceBuilder<T>
+    + withFullLength() : RandomSequenceBuilder<T>
+    + withLength(length : int) : RandomSequenceBuilder<T>
+    + create() : RandomSequence<T>
+}
+
++interface Iterable<T> {
+}
+
++interface RandomSequence<T> extends Iterable {
+    + length() : int
+    + get(position : int) : T
+}
+
++class RandomSequenceException extends RuntimeException {
+    + RandomSequenceException(msg : String)
+}
+
+@enduml
