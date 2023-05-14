@@ -152,4 +152,16 @@ class RandomSequenceBuilderTest {
                 Stream.generate(() -> elem).limit(length).toList());
     }
 
+    @Test
+    void sameElementCanBePartOf_severalGeneratedSequencesTest() {
+        Foo element = new Foo();
+        builder = new RandomSequenceBuilder<>(element);
+
+        RandomSequence<Foo> sequence1 = builder.create();
+        RandomSequence<Foo> sequence2 = builder.create();
+
+        assertThat(sequence1.get(0)).isSameAs(element);
+        assertThat(sequence2.get(0)).isSameAs(element);
+    }
+
 }

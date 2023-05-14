@@ -26,7 +26,7 @@ public final class RandomSequenceBuilder<T> {
 
     //---- Attributes ----
     private final Random rnd;
-    private final List<T> elems;
+    private final List<T> availableElems, remainingElems;
     private boolean allowRepetition;
     private int length;
 
@@ -57,8 +57,9 @@ public final class RandomSequenceBuilder<T> {
                     "can not be null.");
         }
         this.rnd = new Random();
-        this.elems = new ArrayList<>();
-        elems.forEach(this.elems::add);
+        this.availableElems = new ArrayList<>();
+        this.remainingElems = new ArrayList<>();
+        elems.forEach(this.availableElems::add);
 
         notAllowRepetition();
         withFullLength();
@@ -91,7 +92,7 @@ public final class RandomSequenceBuilder<T> {
      * @return the reference of the builder
      */
     public RandomSequenceBuilder<T> withFullLength() {
-        this.length = elems.size();
+        this.length = availableElems.size();
         return this;
     }
 
@@ -123,15 +124,16 @@ public final class RandomSequenceBuilder<T> {
         if(validationException.isPresent()) {
             throw validationException.get();
         } else {
+            resetRemainingElems();
             return createRandomSequence();
         }
     }
 
     private Optional<RandomSequenceException> validate() {
-        if(!allowRepetition && length > elems.size()) {
+        if(!allowRepetition && length > availableElems.size()) {
             return Optional.of(new RandomSequenceException("Error. If repetition isn't allowed, then the length of the sequence must be " +
                     "less or equal to the number of elements available. (length=" + length + ", elements.size()=" +
-                    elems.size() + ")"));
+                    availableElems.size() + ")"));
         }
 
         return Optional.empty();
@@ -145,9 +147,14 @@ public final class RandomSequenceBuilder<T> {
         return new ArrayRandomSequence<>(sequence);
     }
 
+    private void resetRemainingElems() {
+        remainingElems.clear();
+        remainingElems.addAll(availableElems);
+    }
+
     private T getRandomElem() {
-        int randomPosition = rnd.nextInt(elems.size());
+        int randomPosition = rnd.nextInt(remainingElems.size());
         return allowRepetition ?
-                elems.get(randomPosition) : elems.remove(randomPosition);
+                remainingElems.get(randomPosition) : remainingElems.remove(randomPosition);
     }
 }
