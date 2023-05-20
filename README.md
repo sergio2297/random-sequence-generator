@@ -73,7 +73,7 @@ RandomSequence<Integer> lottery = new RandomSequenceBuilder<>(numbers)
 Other times, you will have a tiny collection of elements and the sequence need more than the available elements. In that
 case, it's necessary to allow repetition. If not, a *RandomSequenceException* will be thrown. 
 ```java
-RandomSequence<Coin> model = new RandomSequenceBuilder<>(Coin.HEADS, Coin.TAILS)
+RandomSequence<Coin> sample = new RandomSequenceBuilder<>(Coin.HEADS, Coin.TAILS)
         .allowRepetition()
         .withLength(100)
         .create();
