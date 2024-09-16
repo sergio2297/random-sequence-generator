@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * <p>An array implementation of {@link RandomSequence}. </p>
  * @param <T> Type of elements of the sequence
- * @author SFernandez
+ * @author Sergio Fernández
  */
 class ArrayRandomSequence<T>
             implements RandomSequence<T> {

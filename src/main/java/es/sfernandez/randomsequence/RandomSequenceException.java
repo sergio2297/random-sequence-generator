@@ -1,15 +1,10 @@
-/**
- * @author Sergio Fern�ndez Aguilar
- * @date 13/12/2020
- * @version 0.1
- */
 package es.sfernandez.randomsequence;
 
 /**
  * <p>A RandomSequenceException is special type of {@link RuntimeException} thrown by the classes inside the
  * module randomsequence.</p>
  *
- * @author SFernandez
+ * @author Sergio Fernández
  */
 public class RandomSequenceException
 			extends RuntimeException {

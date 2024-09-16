@@ -7,7 +7,7 @@ package es.sfernandez.randomsequence;
  * Additionally, it provides methods to get the length and the ith element of the sequence.</p>
  *
  * @param <T> Type of elements of the sequence
- * @author SFernandez
+ * @author Sergio Fernández
  */
 public interface RandomSequence<T>
             extends Iterable<T> {

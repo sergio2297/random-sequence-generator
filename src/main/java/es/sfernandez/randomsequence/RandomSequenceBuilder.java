@@ -20,7 +20,7 @@ import java.util.*;
  * </p>
  * @param <T> Type of elements of the sequence
  * @see RandomSequence
- * @author SFernandez
+ * @author Sergio Fernández
  */
 public final class RandomSequenceBuilder<T> {
 

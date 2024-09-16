@@ -7,7 +7,7 @@ import es.sfernandez.randomsequence.RandomSequenceBuilder;
  * {@link es.sfernandez.randomsequence.RandomSequence} using {@link RandomSequenceBuilder}</p>
  *
  * @param <T> Type of elements to use in the sequences
- * @author SFernandez
+ * @author Sergio Fernández
  */
 public interface RandomSequenceGenerator<T> {
 
