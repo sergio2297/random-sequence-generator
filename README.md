@@ -1,5 +1,5 @@
 # Random Sequence Generator
-![language](https://img.shields.io/badge/language-java%2017-red) 
+![language](https://img.shields.io/badge/language-java%2021-red) 
 ![coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)<br>
 The library provides classes to easily generate and handle random sequences of elements built from a given 
 collection. 
